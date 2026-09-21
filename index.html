@@ -39,12 +39,12 @@ footer{padding:28px 0 40px;color:var(--muted);font-size:.9rem}
 <h1>Daipayan Mandal</h1>
 <p class="lead">Civil and Structural Engineering academic with interests in computational structural mechanics, Direct Stiffness Method (DSM), truss optimization, engineering software, digital teaching resources, and academic process automation.</p>
 <div class="hero-actions">
-<a class="btn primary" href="Daipayan_Mandal_Faculty_CV.pdf">Download CV</a>
+<a class="btn primary" href="Daipayan_Mandal_Faculty_CV.pdf" id="cvLink">Download CV</a>
 <a class="btn secondary" href="https://orcid.org/0000-0002-5096-3417" target="_blank">ORCID</a>
 <a class="btn secondary" href="https://github.com/mdaipayan" target="_blank">GitHub</a>
 </div>
 </div>
-<img class="profile" src="assets/profile.jpg" alt="Daipayan Mandal">
+<img class="profile" src="https://avatars.githubusercontent.com/u/49827916?v=4" alt="Daipayan Mandal">
 </div></header>
 
 <main>
@@ -114,5 +114,16 @@ footer{padding:28px 0 40px;color:var(--muted);font-size:.9rem}
 </main>
 
 <footer><div class="container">© 2026 Daipayan Mandal · Assistant Professor, Civil Engineering · KITS, Ramtek</div></footer>
+<script>
+const cvLink=document.getElementById('cvLink');
+if(cvLink){
+  cvLink.addEventListener('click', async (e)=>{
+    try{
+      const r=await fetch('Daipayan_Mandal_Faculty_CV.pdf',{method:'HEAD',cache:'no-store'});
+      if(!r.ok){e.preventDefault();window.location.href='cv.html';}
+    }catch(_){e.preventDefault();window.location.href='cv.html';}
+  });
+}
+</script>
 </body>
 </html>
