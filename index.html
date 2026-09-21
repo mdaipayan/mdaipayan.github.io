@@ -5,18 +5,242 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Daipayan Mandal | Assistant Professor | Civil Engineering</title>
 <meta name="description" content="Academic portfolio of Daipayan Mandal — Civil and Structural Engineering academic, researcher, teacher, and engineering software developer.">
+<script>
+(function() {
+  try {
+    const saved = localStorage.getItem('portfolio-theme');
+    if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    } else {
+      document.documentElement.setAttribute('data-theme', 'light');
+    }
+  } catch(e) {}
+})();
+</script>
 <style>
-:root{--bg:#f6f8fb;--card:#fff;--ink:#172033;--muted:#5f6b7d;--line:#dfe5ee;--accent:#17457f;--accent2:#0e315e;--soft:#edf3fa;--max:1120px}
+:root{
+  --bg:#f6f8fb;
+  --card:#ffffff;
+  --ink:#172033;
+  --muted:#5f6b7d;
+  --line:#dfe5ee;
+  --accent:#17457f;
+  --accent2:#0e315e;
+  --accent-light:#2b6cb0;
+  --soft:#edf3fa;
+  --max:1120px;
+  --shadow-card:0 6px 20px rgba(20,30,50,.04);
+  --shadow-hover:0 12px 28px rgba(20,30,50,.10);
+  --card-border-hover:#b8c7dc;
+  --hero-bg:linear-gradient(180deg,#ffffff 0%,#f7f9fc 100%);
+  --nav-bg:rgba(255,255,255,.94);
+  --badge-journal-bg:#e8f2ff;
+  --badge-journal-text:#0d47a1;
+  --badge-preprint-bg:#fff3e6;
+  --badge-preprint-text:#b25e00;
+  --badge-book-bg:#f4eafd;
+  --badge-book-text:#6a1b9a;
+  --badge-doi-bg:#f1f5f9;
+  --badge-doi-text:#334155;
+  --code-bg:#f4f6fa;
+  --code-border:#d9e2ec;
+  --drawer-bg:#ffffff;
+}
+
+[data-theme="dark"]{
+  --bg:#0f1523;
+  --card:#182032;
+  --ink:#f0f4f9;
+  --muted:#9aa7ba;
+  --line:#263449;
+  --accent:#5b98ea;
+  --accent2:#13243d;
+  --accent-light:#7cb3f6;
+  --soft:#1c273a;
+  --shadow-card:0 6px 20px rgba(0,0,0,.35);
+  --shadow-hover:0 14px 32px rgba(0,0,0,.60);
+  --card-border-hover:#3b5376;
+  --hero-bg:linear-gradient(180deg,#141c2e 0%,#0f1523 100%);
+  --nav-bg:rgba(15,21,35,.94);
+  --badge-journal-bg:#162c4a;
+  --badge-journal-text:#93c5fd;
+  --badge-preprint-bg:#3b2711;
+  --badge-preprint-text:#fdba74;
+  --badge-book-bg:#311b47;
+  --badge-book-text:#d8b4fe;
+  --badge-doi-bg:#202c40;
+  --badge-doi-text:#cbd5e1;
+  --code-bg:#121827;
+  --code-border:#2a3a52;
+  --drawer-bg:#161f31;
+}
+
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;font-family:Inter,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.65}
-a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
+body{
+  margin:0;
+  font-family:Inter,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Arial,sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  line-height:1.65;
+  transition:background-color .22s ease,color .22s ease;
+}
+a{color:var(--accent);text-decoration:none;transition:color .18s ease}
+a:hover{text-decoration:underline}
 .container{max-width:var(--max);margin:auto;padding:0 24px}
-nav{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-.navin{min-height:64px;display:flex;align-items:center;justify-content:space-between;gap:20px}
-.brand{font-weight:800;color:var(--ink);letter-spacing:-.02em}
-.links{display:flex;gap:18px;flex-wrap:wrap}.links a{font-size:.92rem;color:var(--muted)}.links a:hover{color:var(--accent);text-decoration:none}
-.hero{padding:64px 0 46px;background:linear-gradient(180deg,#fff 0,#f7f9fc 100%)}
+
+/* Sticky Navigation Bar */
+nav{position:sticky;top:0;z-index:30;background:var(--nav-bg);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);transition:background-color .22s ease,border-color .22s ease}
+.navin{min-height:64px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{font-weight:800;color:var(--ink);letter-spacing:-.02em;font-size:1.1rem}
+.nav-right{display:flex;align-items:center;gap:16px}
+.links{display:flex;gap:18px;align-items:center}
+.links a{font-size:.92rem;color:var(--muted);font-weight:550;transition:color .18s ease}
+.links a:hover{color:var(--accent);text-decoration:none}
+
+/* Theme Toggle Button */
+.theme-toggle-btn{
+  background:var(--soft);
+  border:1px solid var(--line);
+  color:var(--ink);
+  width:38px;
+  height:38px;
+  border-radius:10px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  transition:transform .18s ease,border-color .18s ease,background-color .18s ease;
+  padding:0;
+  flex-shrink:0;
+}
+.theme-toggle-btn:hover{
+  transform:scale(1.05);
+  border-color:var(--accent);
+}
+.theme-toggle-btn svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+/* Hamburger Toggle for Mobile */
+.nav-toggle-btn{
+  display:none;
+  background:var(--soft);
+  border:1px solid var(--line);
+  color:var(--ink);
+  width:40px;
+  height:40px;
+  border-radius:10px;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  gap:5px;
+  cursor:pointer;
+  padding:0;
+  flex-shrink:0;
+  transition:background-color .18s ease,border-color .18s ease;
+}
+.nav-toggle-btn .bar{
+  width:19px;
+  height:2px;
+  background-color:var(--ink);
+  border-radius:2px;
+  transition:transform .2s ease,opacity .2s ease;
+}
+
+/* Mobile Drawer & Overlay */
+.mobile-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(10,16,28,.6);
+  backdrop-filter:blur(4px);
+  z-index:90;
+  opacity:0;
+  visibility:hidden;
+  transition:opacity .25s ease,visibility .25s ease;
+}
+.mobile-overlay.active{
+  opacity:1;
+  visibility:visible;
+}
+.mobile-drawer{
+  position:fixed;
+  top:0;
+  right:0;
+  bottom:0;
+  width:min(320px,85vw);
+  background:var(--drawer-bg);
+  border-left:1px solid var(--line);
+  z-index:100;
+  display:flex;
+  flex-direction:column;
+  transform:translateX(100%);
+  transition:transform .28s cubic-bezier(.16,1,.3,1);
+  box-shadow:-8px 0 30px rgba(0,0,0,.2);
+  padding:20px 24px;
+}
+.mobile-drawer.active{
+  transform:translateX(0);
+}
+.mobile-drawer-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding-bottom:18px;
+  border-bottom:1px solid var(--line);
+}
+.mobile-drawer-close{
+  background:var(--soft);
+  border:1px solid var(--line);
+  color:var(--ink);
+  width:36px;
+  height:36px;
+  border-radius:8px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  font-size:1.15rem;
+  cursor:pointer;
+  line-height:1;
+}
+.mobile-drawer-links{
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+  padding:20px 0;
+  flex:1;
+  overflow-y:auto;
+}
+.mobile-drawer-links a{
+  padding:12px 14px;
+  border-radius:10px;
+  font-size:1.02rem;
+  color:var(--ink);
+  font-weight:600;
+  display:block;
+  transition:background-color .15s ease,color .15s ease;
+}
+.mobile-drawer-links a:hover{
+  background:var(--soft);
+  color:var(--accent);
+  text-decoration:none;
+}
+.mobile-drawer-footer{
+  border-top:1px solid var(--line);
+  padding-top:18px;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+.drawer-theme-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  font-weight:600;
+  font-size:.92rem;
+  color:var(--ink);
+}
+
+/* Hero Section */
+.hero{padding:64px 0 46px;background:var(--hero-bg);transition:background .22s ease}
 .hero-grid{display:grid;grid-template-columns:minmax(0,1fr) 250px;gap:46px;align-items:center}
 .kicker{text-transform:uppercase;letter-spacing:.13em;font-size:.76rem;font-weight:800;color:var(--accent)}
 h1{font-size:clamp(2.5rem,5vw,4.5rem);line-height:1.03;margin:9px 0 14px;letter-spacing:-.04em}
@@ -24,56 +248,354 @@ h2{font-size:1.8rem;line-height:1.2;margin:0 0 18px;letter-spacing:-.02em}
 h3{font-size:1.05rem;margin:0 0 8px}
 .lead{font-size:1.08rem;color:var(--muted);max-width:800px}
 .hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
-.btn{display:inline-flex;align-items:center;justify-content:center;padding:10px 15px;border-radius:10px;font-weight:750;border:1px solid var(--accent);transition:.2s ease}
-.btn:hover{text-decoration:none;transform:translateY(-1px)}
-.primary{background:var(--accent);color:#fff}.secondary{background:#fff;color:var(--accent)}
-.profile{width:225px;height:275px;object-fit:cover;object-position:50% 18%;border-radius:16px;border:1px solid #c9d1dc;box-shadow:0 16px 40px rgba(23,50,88,.14);background:#fff}
-.evidence{padding:18px 0 4px}.evidence-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-.metric{background:#fff;border:1px solid var(--line);border-radius:13px;padding:17px 18px;box-shadow:0 5px 18px rgba(20,30,50,.035)}
-.metric strong{display:block;font-size:1.25rem;line-height:1.2}.metric span{display:block;color:var(--muted);font-size:.86rem;margin-top:3px}
-section{padding:52px 0;border-bottom:1px solid var(--line)}
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:10px 16px;
+  border-radius:10px;
+  font-weight:750;
+  border:1px solid var(--accent);
+  font-size:.92rem;
+  transition:transform .2s ease,background-color .2s ease,box-shadow .2s ease,color .2s ease;
+  cursor:pointer;
+  line-height:1.3;
+}
+.btn:hover{text-decoration:none;transform:translateY(-2px);box-shadow:0 6px 14px rgba(23,69,127,.15)}
+.btn:active{transform:translateY(0)}
+.primary{background:var(--accent);color:#fff}.secondary{background:var(--card);color:var(--accent);border-color:var(--line)}
+.secondary:hover{border-color:var(--accent)}
+
+.profile{
+  width:225px;
+  height:275px;
+  object-fit:cover;
+  object-position:50% 18%;
+  border-radius:16px;
+  border:1px solid var(--line);
+  box-shadow:0 16px 40px rgba(23,50,88,.14);
+  background:var(--card);
+  transition:transform .25s ease,box-shadow .25s ease;
+}
+.profile:hover{transform:scale(1.02);box-shadow:0 20px 45px rgba(23,50,88,.2)}
+
+/* Evidence Metrics Grid */
+.evidence{padding:18px 0 4px}
+.evidence-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.metric{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:13px;
+  padding:17px 18px;
+  box-shadow:var(--shadow-card);
+  transition:transform .22s cubic-bezier(.16,1,.3,1),box-shadow .22s cubic-bezier(.16,1,.3,1),border-color .22s ease;
+  will-change:transform;
+}
+.metric:hover{
+  transform:translateY(-4px);
+  box-shadow:var(--shadow-hover);
+  border-color:var(--card-border-hover);
+}
+.metric strong{display:block;font-size:1.25rem;line-height:1.2}
+.metric span{display:block;color:var(--muted);font-size:.86rem;margin-top:3px}
+
+/* Sections */
+section{padding:52px 0;border-bottom:1px solid var(--line);transition:border-color .22s ease}
 .section-head{margin-bottom:22px}
 .muted{color:var(--muted)}
 .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
 .grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}
-.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:21px;box-shadow:0 6px 20px rgba(20,30,50,.04)}
+
+/* Card Elements with Lift-Up Hover Animation */
+.card{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:21px;
+  box-shadow:var(--shadow-card);
+  transition:transform .22s cubic-bezier(.16,1,.3,1),box-shadow .22s cubic-bezier(.16,1,.3,1),border-color .22s ease,background-color .22s ease;
+  will-change:transform;
+}
+.card:hover{
+  transform:translateY(-4px);
+  box-shadow:var(--shadow-hover);
+  border-color:var(--card-border-hover);
+}
 .card p{margin:7px 0}
-.card-link{display:inline-block;margin-top:8px;font-weight:750}
-.tags{margin-top:8px}.tag{display:inline-block;font-size:.78rem;padding:5px 9px;border-radius:999px;background:var(--soft);color:var(--accent);font-weight:750;margin:4px 5px 0 0}
-.pub-list{display:grid;gap:14px}
-.pub{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 20px}
-.pub-meta{color:var(--muted);font-size:.92rem;margin:3px 0 8px}.pub-actions{display:flex;gap:14px;flex-wrap:wrap;font-size:.9rem;font-weight:750}
+.card-link{display:inline-block;margin-top:8px;font-weight:750;color:var(--accent)}
+.card-link:hover{text-decoration:underline}
+
+.tags{margin-top:8px}
+.tag{
+  display:inline-block;
+  font-size:.78rem;
+  padding:5px 10px;
+  border-radius:999px;
+  background:var(--soft);
+  color:var(--accent);
+  font-weight:750;
+  margin:4px 5px 0 0;
+  transition:background-color .15s ease,transform .15s ease;
+}
+.tag:hover{transform:translateY(-1px)}
+
+/* Publications with Lift-Up Hover, Badges & Citation System */
+.pub-list{display:grid;gap:16px}
+.pub{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:20px 22px;
+  box-shadow:var(--shadow-card);
+  transition:transform .22s cubic-bezier(.16,1,.3,1),box-shadow .22s cubic-bezier(.16,1,.3,1),border-color .22s ease,background-color .22s ease;
+  will-change:transform;
+}
+.pub:hover{
+  transform:translateY(-4px);
+  box-shadow:var(--shadow-hover);
+  border-color:var(--card-border-hover);
+}
+
+.pub-header{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:8px;
+  margin-bottom:8px;
+}
+.badge{
+  display:inline-flex;
+  align-items:center;
+  gap:4px;
+  font-size:.76rem;
+  font-weight:750;
+  letter-spacing:.02em;
+  padding:3px 9px;
+  border-radius:6px;
+  white-space:nowrap;
+}
+.badge-journal{background:var(--badge-journal-bg);color:var(--badge-journal-text)}
+.badge-preprint{background:var(--badge-preprint-bg);color:var(--badge-preprint-text)}
+.badge-book{background:var(--badge-book-bg);color:var(--badge-book-text)}
+.badge-doi{background:var(--badge-doi-bg);color:var(--badge-doi-text);border:1px solid var(--line)}
+
+.pub-meta{color:var(--muted);font-size:.92rem;margin:4px 0 12px}
+.pub-actions{display:flex;gap:12px;flex-wrap:wrap;align-items:center;font-size:.9rem;font-weight:750}
+
+.btn-cite{
+  display:inline-flex;
+  align-items:center;
+  gap:5px;
+  background:var(--soft);
+  color:var(--accent);
+  border:1px solid var(--line);
+  border-radius:8px;
+  padding:5px 12px;
+  font-size:.84rem;
+  font-weight:700;
+  cursor:pointer;
+  transition:background-color .15s ease,border-color .15s ease,transform .15s ease;
+}
+.btn-cite:hover{
+  border-color:var(--accent);
+  transform:translateY(-1px);
+}
+.btn-cite svg{width:14px;height:14px;fill:currentColor}
+
+/* Expandable Citation Drawer Inside Publication Card */
+.citation-box{
+  display:none;
+  margin-top:14px;
+  padding:14px 16px;
+  background:var(--code-bg);
+  border:1px solid var(--code-border);
+  border-radius:10px;
+}
+.citation-box.open{
+  display:block;
+  animation:citeFadeIn .2s ease forwards;
+}
+@keyframes citeFadeIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+
+.citation-tabs{
+  display:flex;
+  gap:8px;
+  border-bottom:1px solid var(--line);
+  padding-bottom:8px;
+  margin-bottom:10px;
+  align-items:center;
+  justify-content:space-between;
+}
+.citation-tab-group{display:flex;gap:6px}
+.citation-tab{
+  background:transparent;
+  border:none;
+  color:var(--muted);
+  font-weight:700;
+  font-size:.82rem;
+  padding:4px 10px;
+  border-radius:6px;
+  cursor:pointer;
+  transition:color .15s ease,background-color .15s ease;
+}
+.citation-tab.active{
+  background:var(--card);
+  color:var(--accent);
+  border:1px solid var(--line);
+}
+.citation-copy-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:5px;
+  background:var(--accent);
+  color:#fff;
+  border:none;
+  padding:5px 12px;
+  border-radius:7px;
+  font-size:.82rem;
+  font-weight:700;
+  cursor:pointer;
+  transition:transform .15s ease,opacity .15s ease;
+}
+.citation-copy-btn:hover{transform:translateY(-1px)}
+.citation-copy-btn:active{transform:translateY(0)}
+
+.citation-content{
+  font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+  font-size:.82rem;
+  color:var(--ink);
+  line-height:1.55;
+  white-space:pre-wrap;
+  word-break:break-word;
+  background:var(--card);
+  padding:12px 14px;
+  border-radius:8px;
+  border:1px solid var(--line);
+  max-height:190px;
+  overflow-y:auto;
+}
+
 .book{display:flex;justify-content:space-between;gap:18px;align-items:center}
 .software-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
-.software .card{min-height:180px}.feature{border-top:4px solid var(--accent)}
+.software .card{min-height:180px}
+.feature{border-top:4px solid var(--accent)}
 .small-label{font-size:.75rem;text-transform:uppercase;letter-spacing:.1em;font-weight:800;color:var(--accent)}
-.timeline{border-left:2px solid #d5dce7;padding-left:24px}.item{margin-bottom:26px}.item:last-child{margin-bottom:0}
+.timeline{border-left:2px solid var(--line);padding-left:24px}
+.item{margin-bottom:26px}
+.item:last-child{margin-bottom:0}
 .date{color:var(--accent);font-weight:800;font-size:.9rem}
-.callout{background:var(--accent2);color:#fff;border-radius:16px;padding:24px}.callout h3{font-size:1.2rem}.callout p{color:#dce7f5}.callout a{color:#fff;text-decoration:underline}
+.callout{background:var(--accent2);color:#fff;border-radius:16px;padding:24px}
+.callout h3{font-size:1.2rem;color:#fff}
+.callout p{color:#dce7f5}
+.callout a{color:#fff;text-decoration:underline}
+
+/* Form Styles */
 .form-group{margin-bottom:14px}
 .form-label{display:block;font-size:.86rem;font-weight:700;margin-bottom:6px;color:var(--ink)}
-.form-control{width:100%;padding:10px 14px;border:1px solid var(--line);border-radius:10px;font-family:inherit;font-size:.95rem;color:var(--ink);background:#fff;transition:border-color .15s ease,box-shadow .15s ease}
+.form-control{
+  width:100%;
+  padding:10px 14px;
+  border:1px solid var(--line);
+  border-radius:10px;
+  font-family:inherit;
+  font-size:.95rem;
+  color:var(--ink);
+  background:var(--card);
+  transition:border-color .15s ease,box-shadow .15s ease,background-color .22s ease;
+}
 .form-control:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(23,69,127,.12)}
 textarea.form-control{resize:vertical;min-height:110px}
 .form-btn{width:100%;border:none;cursor:pointer;font-size:.95rem;padding:12px 18px}
 .form-btn:disabled{opacity:.65;cursor:not-allowed}
 .form-status{display:none;margin-top:14px;padding:12px 14px;border-radius:10px;font-size:.9rem;line-height:1.4}
 .form-status.success{display:block;background:#eef8f1;color:#1e7e34;border:1px solid #c3e6cb}
+[data-theme="dark"] .form-status.success{background:#132e1d;color:#7ee89b;border-color:#205230}
 .form-status.error{display:block;background:#fdf0f0;color:#c82333;border:1px solid #f5c6cb}
-.form-status.info{display:block;background:var(--soft);color:var(--accent);border:1px solid #c9d9ec}
-footer{padding:28px 0 42px;color:var(--muted);font-size:.9rem}
-@media(max-width:900px){.hero-grid{grid-template-columns:1fr 200px}.software-grid{grid-template-columns:repeat(2,1fr)}.evidence-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:700px){.hero{padding-top:42px}.hero-grid,.grid,.grid.three,.software-grid{grid-template-columns:1fr}.profile{width:170px;height:215px}.links{gap:12px}.book{align-items:flex-start;flex-direction:column}.evidence-grid{grid-template-columns:1fr 1fr}}
+[data-theme="dark"] .form-status.error{background:#351316;color:#fca5a5;border-color:#5c1d22}
+.form-status.info{display:block;background:var(--soft);color:var(--accent);border:1px solid var(--line)}
+
+footer{padding:28px 0 42px;color:var(--muted);font-size:.9rem;border-top:1px solid var(--line);transition:border-color .22s ease}
+
+/* Responsive Media Queries */
+@media(max-width:900px){
+  .hero-grid{grid-template-columns:1fr 200px}
+  .software-grid{grid-template-columns:repeat(2,1fr)}
+  .evidence-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:768px){
+  .links{display:none}
+  .nav-toggle-btn{display:flex}
+}
+@media(max-width:700px){
+  .hero{padding-top:42px}
+  .hero-grid,.grid,.grid.three,.software-grid{grid-template-columns:1fr}
+  .profile{width:170px;height:215px}
+  .book{align-items:flex-start;flex-direction:column}
+  .evidence-grid{grid-template-columns:1fr 1fr}
+}
 </style>
 </head>
 <body>
-<nav><div class="container navin">
-<a class="brand" href="#">Daipayan Mandal</a>
-<div class="links">
-<a href="#about">About</a><a href="#research">Research</a><a href="#software">Software</a><a href="#teaching">Teaching</a><a href="#experience">Experience</a><a href="#contact">Contact</a>
-</div>
-</div></nav>
 
+<!-- Navigation Header -->
+<nav>
+<div class="container navin">
+  <a class="brand" href="#">Daipayan Mandal</a>
+  <div class="nav-right">
+    <div class="links">
+      <a href="#about">About</a>
+      <a href="#research">Research</a>
+      <a href="#software">Software</a>
+      <a href="#teaching">Teaching</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </div>
+    
+    <!-- Theme Toggle Desktop -->
+    <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle dark / light mode" title="Toggle dark / light mode">
+      <svg class="icon-moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+      <svg class="icon-sun" style="display:none;" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+    </button>
+    
+    <!-- Mobile Hamburger Toggle -->
+    <button id="nav-toggle" class="nav-toggle-btn" aria-label="Open mobile navigation menu" aria-expanded="false" aria-controls="mobile-drawer">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+  </div>
+</div>
+</nav>
+
+<!-- Mobile Drawer Overlay & Panel -->
+<div id="mobile-overlay" class="mobile-overlay" aria-hidden="true"></div>
+<aside id="mobile-drawer" class="mobile-drawer" aria-label="Mobile Navigation" aria-hidden="true">
+  <div class="mobile-drawer-head">
+    <span class="brand">Daipayan Mandal</span>
+    <button id="nav-close" class="mobile-drawer-close" aria-label="Close navigation menu">✕</button>
+  </div>
+  <div class="mobile-drawer-links">
+    <a href="#about" class="drawer-link">About</a>
+    <a href="#research" class="drawer-link">Research & Publications</a>
+    <a href="#software" class="drawer-link">Software & Projects</a>
+    <a href="#teaching" class="drawer-link">Teaching Innovation</a>
+    <a href="#experience" class="drawer-link">Professional Experience</a>
+    <a href="#contact" class="drawer-link">Contact</a>
+    <a href="cv.html" class="drawer-link" style="color:var(--accent)">View CV Online ↗</a>
+  </div>
+  <div class="mobile-drawer-footer">
+    <div class="drawer-theme-row">
+      <span>Dark Mode</span>
+      <button id="theme-toggle-mobile" class="theme-toggle-btn" aria-label="Toggle dark / light mode">
+        <svg class="icon-moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        <svg class="icon-sun" style="display:none;" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+      </button>
+    </div>
+    <a class="btn primary" style="width:100%;text-align:center" href="Daipayan_Mandal_Faculty_CV.pdf" download="Daipayan_Mandal_Faculty_CV.pdf">Download Faculty CV</a>
+  </div>
+</aside>
+
+<!-- Hero Section -->
 <header class="hero">
 <div class="container hero-grid">
 <div>
@@ -92,6 +614,7 @@ footer{padding:28px 0 42px;color:var(--muted);font-size:.9rem}
 </div>
 </header>
 
+<!-- Evidence Metrics -->
 <div class="evidence"><div class="container evidence-grid">
 <div class="metric"><strong>12+ Years</strong><span>Academic Service Experience</span></div>
 <div class="metric"><strong>Research</strong><span>Structural Analysis & Optimization</span></div>
@@ -100,6 +623,7 @@ footer{padding:28px 0 42px;color:var(--muted);font-size:.9rem}
 </div></div>
 
 <main>
+<!-- About Section -->
 <section id="about"><div class="container">
 <div class="section-head"><div class="kicker">Profile</div><h2>About Me</h2></div>
 <div class="grid">
@@ -108,28 +632,180 @@ footer{padding:28px 0 42px;color:var(--muted);font-size:.9rem}
 </div>
 </div></section>
 
+<!-- Research & Publications with Dedicated Badges and Citation System -->
 <section id="research"><div class="container">
 <div class="section-head"><div class="kicker">Research & Publications</div><h2>Selected Academic Work</h2></div>
 <div class="pub-list">
-<div class="pub"><h3>Development of an Interactive Web-Based Tool for 2D Truss Analysis Using the Direct Stiffness Method</h3><div class="pub-meta">Mandal, D. (2026). <em>Computer Applications in Engineering Education</em>, 34(3), e70183.</div><div class="pub-actions"><a href="https://doi.org/10.1002/cae.70183" target="_blank" rel="noopener">View publication →</a></div></div>
-<div class="pub"><h3>Automating Examination Grading and Tabulation: A Hybrid Policy-Compliant Framework for Higher Education</h3><div class="pub-meta">Mandal, D. (2025). TechRxiv preprint.</div><div class="pub-actions"><a href="https://doi.org/10.36227/techrxiv.175977600.03855876/v1" target="_blank" rel="noopener">View preprint →</a></div></div>
-<div class="pub"><h3>Compressive Strength Behavior Glass Fibre Reinforced Blast Furnace Slag-Based Material</h3><div class="pub-meta">Mandal, D. (2019). <em>SSRN Electronic Journal</em>.</div><div class="pub-actions"><a href="https://doi.org/10.2139/ssrn.3380074" target="_blank" rel="noopener">View article →</a></div></div>
-<div class="pub book"><div><div class="small-label">Book</div><h3>Engineering a Greener Future: Principles of Environmental Science and Sustainability</h3><div class="pub-meta">Mandal, D., & Yadav, R. S. (2026). Notion Press.</div></div><a class="btn secondary" href="https://amzn.in/d/03H35IXl" target="_blank" rel="noopener">View on Amazon</a></div>
+
+<!-- Publication 1: CAEE Journal -->
+<div class="pub" id="pub-caee-2026">
+  <div class="pub-header">
+    <span class="badge badge-journal">Peer-Reviewed Journal · Wiley</span>
+    <span class="badge badge-doi">2026 · Vol. 34(3)</span>
+    <span class="badge badge-doi">DOI: 10.1002/cae.70183</span>
+  </div>
+  <h3>Development of an Interactive Web-Based Tool for 2D Truss Analysis Using the Direct Stiffness Method</h3>
+  <div class="pub-meta">Mandal, D. (2026). <em>Computer Applications in Engineering Education</em>, 34(3), e70183.</div>
+  <div class="pub-actions">
+    <a href="https://doi.org/10.1002/cae.70183" target="_blank" rel="noopener">View publication →</a>
+    <button type="button" class="btn-cite" onclick="toggleCitation('cite-box-1')">
+      <svg viewBox="0 0 24 24"><path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"/></svg>
+      Cite / BibTeX
+    </button>
+  </div>
+  
+  <div id="cite-box-1" class="citation-box">
+    <div class="citation-tabs">
+      <div class="citation-tab-group">
+        <button class="citation-tab active" onclick="switchCitationTab('cite-box-1', 'apa')">APA</button>
+        <button class="citation-tab" onclick="switchCitationTab('cite-box-1', 'bibtex')">BibTeX</button>
+      </div>
+      <button class="citation-copy-btn" onclick="copyCitation('cite-box-1')">Copy Citation</button>
+    </div>
+    <div class="citation-content" data-current="apa"
+      data-apa="Mandal, D. (2026). Development of an Interactive Web-Based Tool for 2D Truss Analysis Using the Direct Stiffness Method. Computer Applications in Engineering Education, 34(3), e70183. https://doi.org/10.1002/cae.70183"
+      data-bibtex="@article{mandal2026development,
+  title={Development of an Interactive Web-Based Tool for 2D Truss Analysis Using the Direct Stiffness Method},
+  author={Mandal, Daipayan},
+  journal={Computer Applications in Engineering Education},
+  volume={34},
+  number={3},
+  pages={e70183},
+  year={2026},
+  publisher={Wiley Online Library},
+  doi={10.1002/cae.70183}
+}">Mandal, D. (2026). Development of an Interactive Web-Based Tool for 2D Truss Analysis Using the Direct Stiffness Method. Computer Applications in Engineering Education, 34(3), e70183. https://doi.org/10.1002/cae.70183</div>
+  </div>
+</div>
+
+<!-- Publication 2: TechRxiv Preprint -->
+<div class="pub" id="pub-techrxiv-2025">
+  <div class="pub-header">
+    <span class="badge badge-preprint">TechRxiv Preprint</span>
+    <span class="badge badge-doi">2025</span>
+    <span class="badge badge-doi">DOI: 10.36227/techrxiv.175977600</span>
+  </div>
+  <h3>Automating Examination Grading and Tabulation: A Hybrid Policy-Compliant Framework for Higher Education</h3>
+  <div class="pub-meta">Mandal, D. (2025). TechRxiv preprint.</div>
+  <div class="pub-actions">
+    <a href="https://doi.org/10.36227/techrxiv.175977600.03855876/v1" target="_blank" rel="noopener">View preprint →</a>
+    <button type="button" class="btn-cite" onclick="toggleCitation('cite-box-2')">
+      <svg viewBox="0 0 24 24"><path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"/></svg>
+      Cite / BibTeX
+    </button>
+  </div>
+  
+  <div id="cite-box-2" class="citation-box">
+    <div class="citation-tabs">
+      <div class="citation-tab-group">
+        <button class="citation-tab active" onclick="switchCitationTab('cite-box-2', 'apa')">APA</button>
+        <button class="citation-tab" onclick="switchCitationTab('cite-box-2', 'bibtex')">BibTeX</button>
+      </div>
+      <button class="citation-copy-btn" onclick="copyCitation('cite-box-2')">Copy Citation</button>
+    </div>
+    <div class="citation-content" data-current="apa"
+      data-apa="Mandal, D. (2025). Automating Examination Grading and Tabulation: A Hybrid Policy-Compliant Framework for Higher Education. TechRxiv preprint. https://doi.org/10.36227/techrxiv.175977600.03855876/v1"
+      data-bibtex="@article{mandal2025automating,
+  title={Automating Examination Grading and Tabulation: A Hybrid Policy-Compliant Framework for Higher Education},
+  author={Mandal, Daipayan},
+  journal={TechRxiv},
+  year={2025},
+  doi={10.36227/techrxiv.175977600.03855876/v1}
+}">Mandal, D. (2025). Automating Examination Grading and Tabulation: A Hybrid Policy-Compliant Framework for Higher Education. TechRxiv preprint. https://doi.org/10.36227/techrxiv.175977600.03855876/v1</div>
+  </div>
+</div>
+
+<!-- Publication 3: SSRN Electronic Journal -->
+<div class="pub" id="pub-ssrn-2019">
+  <div class="pub-header">
+    <span class="badge badge-journal">SSRN Research Article</span>
+    <span class="badge badge-doi">2019</span>
+    <span class="badge badge-doi">DOI: 10.2139/ssrn.3380074</span>
+  </div>
+  <h3>Compressive Strength Behavior Glass Fibre Reinforced Blast Furnace Slag-Based Material</h3>
+  <div class="pub-meta">Mandal, D. (2019). <em>SSRN Electronic Journal</em>.</div>
+  <div class="pub-actions">
+    <a href="https://doi.org/10.2139/ssrn.3380074" target="_blank" rel="noopener">View article →</a>
+    <button type="button" class="btn-cite" onclick="toggleCitation('cite-box-3')">
+      <svg viewBox="0 0 24 24"><path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"/></svg>
+      Cite / BibTeX
+    </button>
+  </div>
+  
+  <div id="cite-box-3" class="citation-box">
+    <div class="citation-tabs">
+      <div class="citation-tab-group">
+        <button class="citation-tab active" onclick="switchCitationTab('cite-box-3', 'apa')">APA</button>
+        <button class="citation-tab" onclick="switchCitationTab('cite-box-3', 'bibtex')">BibTeX</button>
+      </div>
+      <button class="citation-copy-btn" onclick="copyCitation('cite-box-3')">Copy Citation</button>
+    </div>
+    <div class="citation-content" data-current="apa"
+      data-apa="Mandal, D. (2019). Compressive Strength Behavior Glass Fibre Reinforced Blast Furnace Slag-Based Material. SSRN Electronic Journal. https://doi.org/10.2139/ssrn.3380074"
+      data-bibtex="@article{mandal2019compressive,
+  title={Compressive Strength Behavior Glass Fibre Reinforced Blast Furnace Slag-Based Material},
+  author={Mandal, Daipayan},
+  journal={SSRN Electronic Journal},
+  year={2019},
+  doi={10.2139/ssrn.3380074}
+}">Mandal, D. (2019). Compressive Strength Behavior Glass Fibre Reinforced Blast Furnace Slag-Based Material. SSRN Electronic Journal. https://doi.org/10.2139/ssrn.3380074</div>
+  </div>
+</div>
+
+<!-- Publication 4: Book Publication -->
+<div class="pub book" id="pub-book-2026">
+  <div>
+    <div class="pub-header">
+      <span class="badge badge-book">Book Publication · Notion Press</span>
+      <span class="badge badge-doi">2026</span>
+    </div>
+    <h3>Engineering a Greener Future: Principles of Environmental Science and Sustainability</h3>
+    <div class="pub-meta">Mandal, D., & Yadav, R. S. (2026). Notion Press.</div>
+    <div class="pub-actions">
+      <button type="button" class="btn-cite" onclick="toggleCitation('cite-box-4')">
+        <svg viewBox="0 0 24 24"><path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"/></svg>
+        Cite / BibTeX
+      </button>
+    </div>
+  </div>
+  <a class="btn secondary" href="https://amzn.in/d/03H35IXl" target="_blank" rel="noopener">View on Amazon</a>
+</div>
+
+<div id="cite-box-4" class="citation-box" style="margin-top:-6px;margin-bottom:12px">
+  <div class="citation-tabs">
+    <div class="citation-tab-group">
+      <button class="citation-tab active" onclick="switchCitationTab('cite-box-4', 'apa')">APA</button>
+      <button class="citation-tab" onclick="switchCitationTab('cite-box-4', 'bibtex')">BibTeX</button>
+    </div>
+    <button class="citation-copy-btn" onclick="copyCitation('cite-box-4')">Copy Citation</button>
+  </div>
+  <div class="citation-content" data-current="apa"
+    data-apa="Mandal, D., & Yadav, R. S. (2026). Engineering a Greener Future: Principles of Environmental Science and Sustainability. Notion Press."
+    data-bibtex="@book{mandal2026greener,
+  title={Engineering a Greener Future: Principles of Environmental Science and Sustainability},
+  author={Mandal, Daipayan and Yadav, R. S.},
+  year={2026},
+  publisher={Notion Press}
+}">Mandal, D., & Yadav, R. S. (2026). Engineering a Greener Future: Principles of Environmental Science and Sustainability. Notion Press.</div>
+</div>
+
 </div>
 </div></section>
 
+<!-- Software Section -->
 <section id="software" class="software"><div class="container">
 <div class="section-head"><div class="kicker">Engineering Software</div><h2>Software & Digital Projects</h2></div>
 <div class="software-grid">
 <div class="card feature"><h3>Web-Based Truss Solver</h3><p>Structural analysis application implementing the Direct Stiffness Method.</p><a class="card-link" href="https://trussapp.streamlit.app/" target="_blank" rel="noopener">Open application →</a></div>
 <div class="card feature"><h3>AI Truss Optimization</h3><p>Interactive Streamlit application for truss optimization and computational exploration.</p><a class="card-link" href="https://newaitruappptimization.streamlit.app/" target="_blank" rel="noopener">Open application →</a></div>
 <div class="card feature"><h3>Automated Purlin Design</h3><p>Ongoing Python/Streamlit prototype for purlin calculations and design-report generation.</p><a class="card-link" href="https://prototypepurlindesign.streamlit.app/" target="_blank" rel="noopener">Open prototype →</a></div>
-<div class="card"><h3>3D & Nonlinear Structural Tools</h3><p>GitHub projects covering 3D truss analysis, nonlinear analysis, and structural computation.</p><a class="card-link" href="https://github.com/mdaipayan" target="_blank" rel="noopener">Explore GitHub →</a></div>
-<div class="card"><h3>Examination Automation</h3><p>Google Sheets and LaTeX workflows for tabulation, admit-card generation, and grade-sheet generation without proprietary ERP software.</p><a class="card-link" href="https://github.com/mdaipayan" target="_blank" rel="noopener">View projects →</a></div>
+<div class="card"><h3>3D & Nonlinear Structural Tools</h3><p>GitHub projects covering 3D truss analysis, nonlinear analysis, and structural computation.</p><span style="display:inline-block;margin-top:8px;font-size:.92rem;color:var(--muted)">Available on request; <a class="card-link" style="margin-top:0" href="#contact">contact →</a></span></div>
+<div class="card"><h3>Examination Automation</h3><p>Google Sheets and LaTeX workflows for tabulation, admit-card generation, and grade-sheet generation without proprietary ERP software.</p><span style="display:inline-block;margin-top:8px;font-size:.92rem;color:var(--muted)">Available on request; <a class="card-link" style="margin-top:0" href="#contact">contact →</a></span></div>
 <div class="card"><h3>Independent EdTech Projects</h3><p>Independent education-technology development alongside academic work.</p><a class="card-link" href="https://demo.wardmentor.in/" target="_blank" rel="noopener">WardMentor →</a> · <a class="card-link" href="https://demo.shalaos.in/login" target="_blank" rel="noopener">ShalaOS →</a></div>
 </div>
 </div></section>
 
+<!-- Teaching Section -->
 <section id="teaching"><div class="container">
 <div class="section-head"><div class="kicker">Teaching Innovation</div><h2>Teaching & E-Content</h2></div>
 <div class="grid">
@@ -138,6 +814,7 @@ footer{padding:28px 0 42px;color:var(--muted);font-size:.9rem}
 </div>
 </div></section>
 
+<!-- Experience Section -->
 <section id="experience"><div class="container">
 <div class="section-head"><div class="kicker">Experience</div><h2>Professional Experience</h2></div>
 <div class="timeline">
@@ -147,6 +824,7 @@ footer{padding:28px 0 42px;color:var(--muted);font-size:.9rem}
 </div>
 </div></section>
 
+<!-- Institutional Section -->
 <section><div class="container">
 <div class="section-head"><div class="kicker">Institutional Contribution</div><h2>Examination & Evaluation</h2></div>
 <div class="grid">
@@ -155,6 +833,7 @@ footer{padding:28px 0 42px;color:var(--muted);font-size:.9rem}
 </div>
 </div></section>
 
+<!-- Contact Section with Interactive Form -->
 <section id="contact"><div class="container">
 <div class="section-head"><div class="kicker">Get in Touch</div><h2>Contact</h2></div>
 <div class="grid">
@@ -204,6 +883,145 @@ footer{padding:28px 0 42px;color:var(--muted);font-size:.9rem}
 <footer><div class="container">© 2026 Daipayan Mandal · Assistant Professor, Civil Engineering · KITS, Ramtek</div></footer>
 
 <script>
+// Theme Management
+(function() {
+  const root = document.documentElement;
+  const toggleBtn = document.getElementById('theme-toggle');
+  const toggleBtnMobile = document.getElementById('theme-toggle-mobile');
+
+  function updateIcons(isDark) {
+    const sunIcons = document.querySelectorAll('.icon-sun');
+    const moonIcons = document.querySelectorAll('.icon-moon');
+    sunIcons.forEach(icon => icon.style.display = isDark ? 'block' : 'none');
+    moonIcons.forEach(icon => icon.style.display = isDark ? 'none' : 'block');
+  }
+
+  function toggleTheme() {
+    const current = root.getAttribute('data-theme') || 'light';
+    const next = current === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    localStorage.setItem('portfolio-theme', next);
+    updateIcons(next === 'dark');
+  }
+
+  const initialDark = root.getAttribute('data-theme') === 'dark';
+  updateIcons(initialDark);
+
+  if (toggleBtn) toggleBtn.addEventListener('click', toggleTheme);
+  if (toggleBtnMobile) toggleBtnMobile.addEventListener('click', toggleTheme);
+})();
+
+// Mobile Navigation Drawer Management
+(function() {
+  const navToggle = document.getElementById('nav-toggle');
+  const navClose = document.getElementById('nav-close');
+  const drawer = document.getElementById('mobile-drawer');
+  const overlay = document.getElementById('mobile-overlay');
+  const drawerLinks = document.querySelectorAll('.drawer-link');
+
+  function openDrawer() {
+    if (!drawer || !overlay) return;
+    drawer.classList.add('active');
+    overlay.classList.add('active');
+    drawer.setAttribute('aria-hidden', 'false');
+    overlay.setAttribute('aria-hidden', 'false');
+    if (navToggle) navToggle.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeDrawer() {
+    if (!drawer || !overlay) return;
+    drawer.classList.remove('active');
+    overlay.classList.remove('active');
+    drawer.setAttribute('aria-hidden', 'true');
+    overlay.setAttribute('aria-hidden', 'true');
+    if (navToggle) navToggle.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+
+  if (navToggle) navToggle.addEventListener('click', openDrawer);
+  if (navClose) navClose.addEventListener('click', closeDrawer);
+  if (overlay) overlay.addEventListener('click', closeDrawer);
+
+  drawerLinks.forEach(link => {
+    link.addEventListener('click', closeDrawer);
+  });
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && drawer && drawer.classList.contains('active')) {
+      closeDrawer();
+    }
+  });
+})();
+
+// Citation Functions
+function toggleCitation(boxId) {
+  const box = document.getElementById(boxId);
+  if (!box) return;
+  box.classList.toggle('open');
+}
+
+function switchCitationTab(boxId, format) {
+  const box = document.getElementById(boxId);
+  if (!box) return;
+  const content = box.querySelector('.citation-content');
+  const tabs = box.querySelectorAll('.citation-tab');
+  if (!content) return;
+
+  tabs.forEach(tab => {
+    if (tab.textContent.toLowerCase() === format.toLowerCase()) {
+      tab.classList.add('active');
+    } else {
+      tab.classList.remove('active');
+    }
+  });
+
+  content.setAttribute('data-current', format);
+  if (format === 'apa') {
+    content.textContent = content.getAttribute('data-apa');
+  } else {
+    content.textContent = content.getAttribute('data-bibtex');
+  }
+}
+
+async function copyCitation(boxId) {
+  const box = document.getElementById(boxId);
+  if (!box) return;
+  const content = box.querySelector('.citation-content');
+  const copyBtn = box.querySelector('.citation-copy-btn');
+  if (!content || !copyBtn) return;
+
+  const textToCopy = content.textContent;
+  try {
+    await navigator.clipboard.writeText(textToCopy);
+    const originalText = copyBtn.textContent;
+    copyBtn.textContent = '✓ Copied!';
+    copyBtn.style.backgroundColor = '#16a34a';
+    setTimeout(() => {
+      copyBtn.textContent = originalText;
+      copyBtn.style.backgroundColor = '';
+    }, 2000);
+  } catch (err) {
+    // Fallback selection copy
+    const textarea = document.createElement('textarea');
+    textarea.value = textToCopy;
+    document.body.appendChild(textarea);
+    textarea.select();
+    try {
+      document.execCommand('copy');
+      const originalText = copyBtn.textContent;
+      copyBtn.textContent = '✓ Copied!';
+      copyBtn.style.backgroundColor = '#16a34a';
+      setTimeout(() => {
+        copyBtn.textContent = originalText;
+        copyBtn.style.backgroundColor = '';
+      }, 2000);
+    } catch(e) {}
+    document.body.removeChild(textarea);
+  }
+}
+
+// Contact Form Handler
 (function() {
   const form = document.getElementById('contact-form');
   const status = document.getElementById('contact-status');
