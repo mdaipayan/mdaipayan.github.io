@@ -50,6 +50,17 @@ section{padding:52px 0;border-bottom:1px solid var(--line)}
 .timeline{border-left:2px solid #d5dce7;padding-left:24px}.item{margin-bottom:26px}.item:last-child{margin-bottom:0}
 .date{color:var(--accent);font-weight:800;font-size:.9rem}
 .callout{background:var(--accent2);color:#fff;border-radius:16px;padding:24px}.callout h3{font-size:1.2rem}.callout p{color:#dce7f5}.callout a{color:#fff;text-decoration:underline}
+.form-group{margin-bottom:14px}
+.form-label{display:block;font-size:.86rem;font-weight:700;margin-bottom:6px;color:var(--ink)}
+.form-control{width:100%;padding:10px 14px;border:1px solid var(--line);border-radius:10px;font-family:inherit;font-size:.95rem;color:var(--ink);background:#fff;transition:border-color .15s ease,box-shadow .15s ease}
+.form-control:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(23,69,127,.12)}
+textarea.form-control{resize:vertical;min-height:110px}
+.form-btn{width:100%;border:none;cursor:pointer;font-size:.95rem;padding:12px 18px}
+.form-btn:disabled{opacity:.65;cursor:not-allowed}
+.form-status{display:none;margin-top:14px;padding:12px 14px;border-radius:10px;font-size:.9rem;line-height:1.4}
+.form-status.success{display:block;background:#eef8f1;color:#1e7e34;border:1px solid #c3e6cb}
+.form-status.error{display:block;background:#fdf0f0;color:#c82333;border:1px solid #f5c6cb}
+.form-status.info{display:block;background:var(--soft);color:var(--accent);border:1px solid #c9d9ec}
 footer{padding:28px 0 42px;color:var(--muted);font-size:.9rem}
 @media(max-width:900px){.hero-grid{grid-template-columns:1fr 200px}.software-grid{grid-template-columns:repeat(2,1fr)}.evidence-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:700px){.hero{padding-top:42px}.hero-grid,.grid,.grid.three,.software-grid{grid-template-columns:1fr}.profile{width:170px;height:215px}.links{gap:12px}.book{align-items:flex-start;flex-direction:column}.evidence-grid{grid-template-columns:1fr 1fr}}
@@ -145,15 +156,98 @@ footer{padding:28px 0 42px;color:var(--muted);font-size:.9rem}
 </div></section>
 
 <section id="contact"><div class="container">
-<div class="callout"><h3>Academic & Professional Links</h3><p>Explore my research, engineering applications, teaching resources, and software development work.</p><div class="hero-actions">
-<a href="https://github.com/mdaipayan" target="_blank" rel="noopener">GitHub →</a>
-<a href="https://orcid.org/0000-0002-5096-3417" target="_blank" rel="noopener">ORCID →</a>
-<a href="https://trussapp.streamlit.app/" target="_blank" rel="noopener">Truss Solver →</a>
-<a href="https://mdaipayan.github.io/Strength-of-Material/" target="_blank" rel="noopener">E-Content →</a>
-</div></div>
+<div class="section-head"><div class="kicker">Get in Touch</div><h2>Contact</h2></div>
+<div class="grid">
+<div class="card" id="contact-info-card">
+<h3>Academic & Professional Reach</h3>
+<p>Feel free to reach out regarding academic inquiries, research collaborations, structural analysis tools, student guidance, or institutional workflows.</p>
+<div style="margin:16px 0">
+<p style="margin:6px 0"><strong>Email:</strong> <a href="mailto:mandalk6179@gmail.com">mandalk6179@gmail.com</a></p>
+<p style="margin:6px 0"><strong>Office:</strong> Department of Civil Engineering, KITS, Ramtek, Maharashtra, India</p>
+</div>
+<div class="tags" style="margin-top:16px">
+<a class="tag" href="https://github.com/mdaipayan" target="_blank" rel="noopener">GitHub ↗</a>
+<a class="tag" href="https://orcid.org/0000-0002-5096-3417" target="_blank" rel="noopener">ORCID ↗</a>
+<a class="tag" href="https://trussapp.streamlit.app/" target="_blank" rel="noopener">Truss Solver ↗</a>
+<a class="tag" href="https://mdaipayan.github.io/Strength-of-Material/" target="_blank" rel="noopener">E-Content ↗</a>
+</div>
+</div>
+
+<div class="card" id="contact-form-card">
+<h3>Send a Direct Message</h3>
+<p class="muted" style="margin-bottom:14px">Visitors can send an email directly using the form below (powered by Formspree).</p>
+<form id="contact-form" action="https://formspree.io/f/mandalk6179@gmail.com" method="POST">
+<div class="form-group">
+<label class="form-label" for="contact-name">Your Name</label>
+<input class="form-control" type="text" id="contact-name" name="name" placeholder="Prof. / Dr. / Your Name" required autocomplete="name">
+</div>
+<div class="form-group">
+<label class="form-label" for="contact-email">Your Email Address</label>
+<input class="form-control" type="email" id="contact-email" name="email" placeholder="name@example.com" required autocomplete="email">
+</div>
+<div class="form-group">
+<label class="form-label" for="contact-subject">Subject</label>
+<input class="form-control" type="text" id="contact-subject" name="_subject" placeholder="Research inquiry / Question / Collaboration">
+</div>
+<div class="form-group">
+<label class="form-label" for="contact-message">Message</label>
+<textarea class="form-control" id="contact-message" name="message" rows="4" placeholder="Type your message here..." required></textarea>
+</div>
+<button type="submit" id="contact-submit-btn" class="btn primary form-btn">Send Message</button>
+<div id="contact-status" class="form-status" role="alert"></div>
+</form>
+</div>
+</div>
 </div></section>
 </main>
 
 <footer><div class="container">© 2026 Daipayan Mandal · Assistant Professor, Civil Engineering · KITS, Ramtek</div></footer>
+
+<script>
+(function() {
+  const form = document.getElementById('contact-form');
+  const status = document.getElementById('contact-status');
+  const btn = document.getElementById('contact-submit-btn');
+  if (!form || !status || !btn) return;
+
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    btn.disabled = true;
+    const originalBtnText = btn.textContent;
+    btn.textContent = 'Sending Message...';
+    status.className = 'form-status info';
+    status.textContent = 'Sending your message...';
+
+    const formData = new FormData(form);
+    try {
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (response.ok) {
+        status.className = 'form-status success';
+        status.textContent = 'Thank you! Your message has been sent successfully. I will get back to you shortly.';
+        form.reset();
+      } else {
+        const data = await response.json().catch(() => null);
+        let errorMsg = 'Oops! There was an issue sending your message.';
+        if (data && data.errors && data.errors.length > 0) {
+          errorMsg = data.errors.map(err => err.message).join('. ');
+        }
+        status.className = 'form-status error';
+        status.innerHTML = errorMsg + ' Alternatively, feel free to email directly at <a href="mailto:mandalk6179@gmail.com">mandalk6179@gmail.com</a>.';
+      }
+    } catch (err) {
+      status.className = 'form-status error';
+      status.innerHTML = 'Network error while transmitting your message. Please try again or write to <a href="mailto:mandalk6179@gmail.com">mandalk6179@gmail.com</a>.';
+    } finally {
+      btn.disabled = false;
+      btn.textContent = originalBtnText;
+    }
+  });
+})();
+</script>
 </body>
 </html>
