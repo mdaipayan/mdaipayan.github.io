@@ -31,7 +31,7 @@ ul{margin:5px 0 7px;padding-left:19px}li{font-size:12px;margin:3px 0}
 <p class="muted">Kavikulguru Institute of Technology and Science (KITS), Ramtek, Maharashtra, India</p>
 <p>ORCID: <a href="https://orcid.org/0000-0002-5096-3417">0000-0002-5096-3417</a> · GitHub: <a href="https://github.com/mdaipayan">github.com/mdaipayan</a></p>
 </div>
-<img class="photo" id="cvProfileImage" alt="Daipayan Mandal" loading="eager" decoding="async">
+<img class="photo" src="https://raw.githubusercontent.com/mdaipayan/mdaipayan.github.io/main/assets/ProfileImage.jpg?v=4" alt="Daipayan Mandal" loading="eager" decoding="async">
 </div>
 
 <h2>Professional Profile</h2>
@@ -95,18 +95,6 @@ ul{margin:5px 0 7px;padding-left:19px}li{font-size:12px;margin:3px 0}
 
 <p class="muted small">This page is a web-based printable version of the faculty CV. For the final official PDF, upload the signed LaTeX-generated PDF to the repository root as <strong>Daipayan_Mandal_Faculty_CV.pdf</strong>.</p>
 </div>
-<script>
-(async function(){
-  const img=document.getElementById('cvProfileImage');
-  if(!img) return;
-  try{
-    const r=await fetch('assets/ProfileImage.new.b64?v=1',{cache:'no-store'});
-    const b=(await r.text()).trim();
-    if(b) img.src='data:image/jpeg;base64,'+b;
-  }catch(e){
-    img.src='https://avatars.githubusercontent.com/u/49827916?v=4';
-  }
-})();
-</script>
+
 </body>
 </html>
