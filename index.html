@@ -930,8 +930,8 @@ footer{padding:28px 0 42px;color:var(--muted);font-size:.9rem;border-top:1px sol
   </div>
 </div>
 
-<!-- Featured Certification Card -->
-<div class="card cert-card" id="cert-nptel" style="border:1.5px solid var(--line);box-shadow:var(--shadow-card);border-radius:14px;padding:26px 28px;position:relative;overflow:hidden">
+<!-- Featured Certification Card: NPTEL Elite -->
+<div class="card cert-card" id="cert-nptel" style="border:1.5px solid var(--line);box-shadow:var(--shadow-card);border-radius:14px;padding:26px 28px;position:relative;overflow:hidden;margin-bottom:28px">
   <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap">
     <div>
       <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:10px">
@@ -963,23 +963,140 @@ footer{padding:28px 0 42px;color:var(--muted);font-size:.9rem;border-top:1px sol
       <a class="btn primary" style="padding:7px 16px;font-size:.88rem" href="public/assets/aistudio/NOC26CE158S460802070_09495ab9.pdf" target="_blank" rel="noopener">
         <svg style="width:14px;height:14px;vertical-align:-2px;margin-right:6px;fill:currentColor" viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>View Official Certificate (PDF) ↗
       </a>
-      <button type="button" id="cert-preview-btn" class="btn secondary" style="padding:7px 16px;font-size:.88rem;cursor:pointer" onclick="toggleCertPreview()">
-        <svg style="width:14px;height:14px;vertical-align:-2px;margin-right:6px;fill:currentColor" viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>Toggle Certificate Preview
+      <button type="button" class="btn secondary" style="padding:7px 16px;font-size:.88rem;cursor:pointer" onclick="previewCert('public/assets/aistudio/NOC26CE158S460802070_09495ab9.pdf', 'NPTEL Elite Certificate: Optimization Methods for Civil Engineering — IIT Guwahati')">
+        <svg style="width:14px;height:14px;vertical-align:-2px;margin-right:6px;fill:currentColor" viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>Preview on Page
       </button>
     </div>
     <div style="font-family:var(--font-mono);font-size:.82rem;color:var(--muted)">
       Roll No: <strong>NPTEL26CE158S460802070</strong>
     </div>
   </div>
+</div>
 
-  <!-- Expandable In-Page Preview Frame -->
-  <div id="cert-preview-drawer" class="cert-preview-box">
-    <div class="cert-preview-head">
-      <span>Official NPTEL Certificate — IIT Guwahati · Roll No: NPTEL26CE158S460802070</span>
-      <button type="button" onclick="toggleCertPreview()" style="background:transparent;border:none;font-weight:700;color:var(--muted);cursor:pointer;font-size:1.1rem;line-height:1" title="Close Preview">✕</button>
+<!-- Specialized IIT Certifications & Pedagogical Training -->
+<div style="margin-bottom:18px">
+  <div style="display:flex;align-items:center;gap:10px;margin-bottom:18px">
+    <div style="width:34px;height:34px;border-radius:8px;background:var(--soft);color:var(--accent);display:flex;align-items:center;justify-content:center">
+      <svg style="width:18px;height:18px;fill:currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
     </div>
-    <iframe class="cert-preview-frame" src="public/assets/aistudio/NOC26CE158S460802070_09495ab9.pdf" title="NPTEL Optimization Methods for Civil Engineering Certificate"></iframe>
+    <div>
+      <h3 style="margin:0;font-size:1.18rem;letter-spacing:-.01em">Specialized Certifications & Pedagogical Training</h3>
+      <p style="margin:2px 0 0;font-size:.88rem;color:var(--muted)">Online courses and faculty development workshops conducted by Indian Institute of Technology Bombay (IIT Bombay)</p>
+    </div>
   </div>
+
+  <div class="grid" style="align-items:stretch">
+    <!-- Card 1: LaTeX101x -->
+    <div class="card cert-card" style="display:flex;flex-direction:column;justify-content:space-between">
+      <div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-bottom:8px">
+          <span class="badge" style="background:#eef4fb;color:var(--accent);font-weight:750">IITBombayX</span>
+          <span class="badge" style="background:#e6f8ec;color:#166534;font-weight:800;border:1px solid #bbf7d0">Grade A+ (Distinction)</span>
+          <span class="badge badge-doi">Jul – Dec 2020</span>
+        </div>
+        <h3 style="font-size:1.12rem;margin:0 0 6px">LaTeX101x: LaTeX for Students, Engineers, and Scientists</h3>
+        <p class="pub-meta" style="margin-bottom:8px">Offered by <strong>IIT Bombay</strong> · Coordinated by Prof. Deepak Phatak (CSE, IIT Bombay)</p>
+        <p style="font-size:.90rem;color:var(--muted);line-height:1.55;margin-bottom:12px">
+          Advanced scientific and engineering documentation, mathematical typesetting, automated reporting, and tabular systems. Direct application in developing LaTeX-based automated admit card and grade-sheet generators.
+        </p>
+      </div>
+      <div style="padding-top:10px;border-top:1px solid var(--line);display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+        <a class="btn primary" style="padding:5px 12px;font-size:.82rem" href="public/assets/aistudio/Certificate_LaTex_f92ea320.pdf" target="_blank" rel="noopener">
+          View PDF ↗
+        </a>
+        <button type="button" class="btn secondary" style="padding:5px 12px;font-size:.82rem;cursor:pointer" onclick="previewCert('public/assets/aistudio/Certificate_LaTex_f92ea320.pdf', 'LaTeX101x Honour Code Certificate (Grade A+) — IITBombayX / IIT Bombay')">
+          Preview
+        </button>
+        <a class="card-link" style="margin:0 0 0 auto;font-size:.80rem" href="https://certificate.iitbombayx.in/downloads/2dbab4b2a8ee43068958ec9cbbdd5246/Certificate.pdf" target="_blank" rel="noopener">
+          Verify ↗
+        </a>
+      </div>
+    </div>
+
+    <!-- Card 2: PYTHON101x -->
+    <div class="card cert-card" style="display:flex;flex-direction:column;justify-content:space-between">
+      <div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-bottom:8px">
+          <span class="badge" style="background:#eef4fb;color:var(--accent);font-weight:750">IITBombayX</span>
+          <span class="badge" style="background:#e6f8ec;color:#166534;font-weight:800;border:1px solid #bbf7d0">Grade A</span>
+          <span class="badge badge-doi">Jan – May 2021</span>
+        </div>
+        <h3 style="font-size:1.12rem;margin:0 0 6px">PYTHON101x: Basic Programming using Python</h3>
+        <p class="pub-meta" style="margin-bottom:8px">Offered by <strong>IIT Bombay</strong> · Coordinated by Prof. Prabhu Ramachandran (Aerospace, IIT Bombay)</p>
+        <p style="font-size:.90rem;color:var(--muted);line-height:1.55;margin-bottom:12px">
+          Core Python programming, data structures, scientific computing paradigms, and numerical problem solving. Foundation for engineering software tools, 2D/3D truss solvers, and web computation applications.
+        </p>
+      </div>
+      <div style="padding-top:10px;border-top:1px solid var(--line);display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+        <a class="btn primary" style="padding:5px 12px;font-size:.82rem" href="public/assets/aistudio/Certificate_e0266eac.pdf" target="_blank" rel="noopener">
+          View PDF ↗
+        </a>
+        <button type="button" class="btn secondary" style="padding:5px 12px;font-size:.82rem;cursor:pointer" onclick="previewCert('public/assets/aistudio/Certificate_e0266eac.pdf', 'PYTHON101x Honour Code Certificate (Grade A) — IITBombayX / IIT Bombay')">
+          Preview
+        </button>
+        <a class="card-link" style="margin:0 0 0 auto;font-size:.80rem" href="https://certificate.iitbombayx.in/downloads/0754b257903f405f9de4a9086e9ddb5c/Certificate.pdf" target="_blank" rel="noopener">
+          Verify ↗
+        </a>
+      </div>
+    </div>
+
+    <!-- Card 3: BodhiTree & SAFE Tools Workshop -->
+    <div class="card cert-card" style="display:flex;flex-direction:column;justify-content:space-between">
+      <div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-bottom:8px">
+          <span class="badge" style="background:#f4eafd;color:#6a1b9a;font-weight:750">Teaching Learning Centre</span>
+          <span class="badge" style="background:#eef4fb;color:var(--accent);font-weight:700">IIT Bombay</span>
+          <span class="badge badge-doi">21 June 2020</span>
+        </div>
+        <h3 style="font-size:1.12rem;margin:0 0 6px">The BodhiTree and SAFE Tools for Effective Online Teaching</h3>
+        <p class="pub-meta" style="margin-bottom:8px">Teaching Learning Centre (ICT) at <strong>IIT Bombay</strong> · PMMMNMTT, MHRD, Govt. of India</p>
+        <p style="font-size:.90rem;color:var(--muted);line-height:1.55;margin-bottom:12px">
+          Hands-on faculty workshop covering online teaching interaction, automated quizzing with the SAFE tool, and online learning content authoring via the BodhiTree platform (Spoken Tutorial & FOSSEE projects).
+        </p>
+      </div>
+      <div style="padding-top:10px;border-top:1px solid var(--line);display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+        <a class="btn primary" style="padding:5px 12px;font-size:.82rem" href="public/assets/aistudio/certificate_Bodhitree_2nd_workshop_7c7ad450.pdf" target="_blank" rel="noopener">
+          View PDF ↗
+        </a>
+        <button type="button" class="btn secondary" style="padding:5px 12px;font-size:.82rem;cursor:pointer" onclick="previewCert('public/assets/aistudio/certificate_Bodhitree_2nd_workshop_7c7ad450.pdf', 'BodhiTree & SAFE Tools Workshop Certificate — TLC, IIT Bombay')">
+          Preview
+        </button>
+      </div>
+    </div>
+
+    <!-- Card 4: Effective Online Teaching Workshop -->
+    <div class="card cert-card" style="display:flex;flex-direction:column;justify-content:space-between">
+      <div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-bottom:8px">
+          <span class="badge" style="background:#f4eafd;color:#6a1b9a;font-weight:750">Teaching Learning Centre</span>
+          <span class="badge" style="background:#eef4fb;color:var(--accent);font-weight:700">IIT Bombay</span>
+          <span class="badge badge-doi">16 May 2020</span>
+        </div>
+        <h3 style="font-size:1.12rem;margin:0 0 6px">Effective and Efficient Online Teaching: A Hands-On Workshop</h3>
+        <p class="pub-meta" style="margin-bottom:8px">Teaching Learning Centre (ICT) at <strong>IIT Bombay</strong> · PMMMNMTT, MHRD, Govt. of India</p>
+        <p style="font-size:.90rem;color:var(--muted);line-height:1.55;margin-bottom:12px">
+          Three days of video lectures, online activities, and live interaction sessions on digital pedagogy, flipped-learning models, and technology-mediated engineering instruction during remote learning.
+        </p>
+      </div>
+      <div style="padding-top:10px;border-top:1px solid var(--line);display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+        <a class="btn primary" style="padding:5px 12px;font-size:.82rem" href="public/assets/aistudio/BodhiTree-1_certificate_8e06fe13.pdf" target="_blank" rel="noopener">
+          View PDF ↗
+        </a>
+        <button type="button" class="btn secondary" style="padding:5px 12px;font-size:.82rem;cursor:pointer" onclick="previewCert('public/assets/aistudio/BodhiTree-1_certificate_8e06fe13.pdf', 'Effective Online Teaching Workshop Certificate — TLC, IIT Bombay')">
+          Preview
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Expandable In-Page Unified Certificate Preview Frame -->
+<div id="cert-preview-drawer" class="cert-preview-box">
+  <div class="cert-preview-head">
+    <span id="cert-preview-title" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:85%">Official Certificate Preview</span>
+    <button type="button" onclick="closeCertPreview()" style="background:transparent;border:none;font-weight:700;color:var(--muted);cursor:pointer;font-size:1.1rem;line-height:1" title="Close Preview">✕</button>
+  </div>
+  <iframe id="cert-preview-iframe" class="cert-preview-frame" src="public/assets/aistudio/NOC26CE158S460802070_09495ab9.pdf" title="Certificate Document Preview"></iframe>
 </div>
 </div></section>
 
@@ -1126,20 +1243,33 @@ footer{padding:28px 0 42px;color:var(--muted);font-size:.9rem;border-top:1px sol
   });
 })();
 
-// Certificate Preview Toggle
-function toggleCertPreview() {
+// Certificate Preview Functions
+function previewCert(pdfUrl, title) {
   const drawer = document.getElementById('cert-preview-drawer');
-  const btn = document.getElementById('cert-preview-btn');
-  if (!drawer) return;
-  const isOpen = drawer.classList.toggle('open');
-  if (btn) {
-    if (isOpen) {
-      btn.innerHTML = '<svg style="width:14px;height:14px;vertical-align:-2px;margin-right:6px;fill:currentColor" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>Hide Preview';
-      drawer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    } else {
-      btn.innerHTML = '<svg style="width:14px;height:14px;vertical-align:-2px;margin-right:6px;fill:currentColor" viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>Toggle Certificate Preview';
-    }
+  const frame = document.getElementById('cert-preview-iframe');
+  const titleEl = document.getElementById('cert-preview-title');
+  if (!drawer || !frame) return;
+
+  if (drawer.classList.contains('open') && frame.getAttribute('src') === pdfUrl) {
+    drawer.classList.remove('open');
+    return;
   }
+
+  frame.src = pdfUrl;
+  if (titleEl && title) {
+    titleEl.textContent = title;
+  }
+  drawer.classList.add('open');
+  drawer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function closeCertPreview() {
+  const drawer = document.getElementById('cert-preview-drawer');
+  if (drawer) drawer.classList.remove('open');
+}
+
+function toggleCertPreview() {
+  previewCert('public/assets/aistudio/NOC26CE158S460802070_09495ab9.pdf', 'NPTEL Elite Certificate: Optimization Methods for Civil Engineering — IIT Guwahati');
 }
 
 // Citation Functions
